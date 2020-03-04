@@ -1,0 +1,2 @@
+include ':app','fancydialoglib'
+rootProject.name = 'PropertyFinderAgent'

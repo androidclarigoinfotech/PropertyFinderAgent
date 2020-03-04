@@ -1,0 +1,127 @@
+<resources>
+    <string name="app_name">PropertyFinderAgent</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_home">Map</string>
+    <string name="google_api_keys" translatable="false">AIzaSyDegNnOxwwl6IXxz0Noe2phkya7sDZKIDQ</string>
+
+
+    <!--Navigation Drawer-->
+    <string name="Home" translatable="false">Home</string>
+    <string name="Ride_history" translatable="false">Ride History</string>
+    <string name="notifications">Notifications</string>
+    <string name="setting">Settings</string>
+    <string name="share_app">Share App</string>
+    <string name="history">history</string>
+    <string name="saved_properties" translatable="false">Saved Properties</string>
+    <string name="invite_friends" translatable="false">Invite Friends</string>
+    <string name="support" translatable="false">Support</string>
+    <string name="logout" translatable="false">logout</string>
+    <string name="account_setting" translatable="false">Account Settings</string>
+
+    <string-array name="nav_drawer_labels">
+        <item>@string/Home</item>
+        <item>@string/Ride_history</item>
+        <item>@string/account_setting</item>
+        <item>@string/invite_friends</item>
+        <item>@string/support</item>
+        <item>@string/logout</item>
+    </string-array>
+    <string name="drawer_open" translatable="false">Open</string>
+    <string name="drawer_close" translatable="false">Close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="ok">OK</string>
+    <string name="Driver_Position">Driver Position</string>
+    <string name="Location_Permission_Needed">Location Permission Needed</string>
+    <string name="This_app_needs_the_Location_permission_please_accept_to_use_location_functionality">This app needs the Location permission, please accept to use location functionality</string>
+    <string name="Lets_show_some_home">Let\'s show some home</string>
+    <string name="Welcome">Welcome,</string>
+    <string name="plz_login_to_continue">Please login to continue.</string>
+    <string name="your_email">Your Email</string>
+    <string name="password">Password</string>
+    <string name="Signin">Sign In</string>
+    <string name="dont_have_an_account_plz_signup">Don\'t have an account?<b> sign up.</b> </string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="application_acceptance_results_within_hours">application acceptance results within hours</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="dre">DRE#</string>
+    <string name="phon_number">Phone Number</string>
+    <string name="agent_membership">Agent Membership</string>
+    <string name="plz_check_all_that_applies_to_you">Please check all that applies to you</string>
+    <string name="registered_mls">Registered MLS</string>
+    <string name="association_of_realtors">Association of Realtors</string>
+    <string name="ekey_access">eKey Access</string>
+    <string name="agent_Documents">Agent Documents</string>
+    <string name="take_a_picture__upload_agent_licence">Take a picture/upload Agent licence</string>
+    <string name="Upload_Real_Estate_Licence">Upload Real Estate Licence</string>
+    <string name="upload_driver_licence">Upload Driver Licence</string>
+    <string name="agent_registration">Agent Registration</string>
+    <string name="create_login_credentials">Create login credentials</string>
+    <string name="email">Email</string>
+    <string name="passowrd">Password</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="send_approval">Send Approval</string>
+    <string name="Agent_Information">Agent Information</string>
+    <string name="your_all_set">Your All Set</string>
+    <string name="application_successfully_completed">Application successfully completed and\nin pending status. Approval status will\nbe send through text and email within\ncouple of hours upon review.</string>
+    <string name="close">Close</string>
+    <string name="my_setting">My Settings</string>
+    <string name="reviews"><b> REVIEWS </b></string>
+    <string name="my_car"> <b>MY CAR</b> </string>
+    <string name="documents"> <b>DOCUMENTS</b> </string>
+    <string name="car_registration">Car Registration :</string>
+    <string name="car_insurence">Car Insurence</string>
+    <string name="other_documents">Other Documents :</string>
+    <string name="submit">Submit</string>
+    <string name="vehical_information">Vehical Information</string>
+    <string name="car_make">Car Make</string>
+    <string name="car_model">Car Model</string>
+    <string name="seaters">Seaters</string>
+    <string name="vehical_Documents">Vehical Documents</string>
+    <string name="vehical_insurence">Vehical Insurence :</string>
+    <string name="add_vehical">Add Vehical</string>
+    <string name="vehical_model">Vehical Model</string>
+    <string name="vehical_make">Vehical Make</string>
+    <string name="approved">approved</string>
+    <string name="Cancel">Cancle</string>
+    <string name="arrived">Arrived</string>
+    <string name="property_infermation">Property Information</string>
+    <string name="navigate">Navigate</string>
+    <string name="waiting_for_rider">Waiting for rider</string>
+    <string name="lets_go">Let\'s Go !</string>
+    <string name="to">To</string>
+    <string name="from">From</string>
+    <string name="ready_for_drop_off">ready for drop off</string>
+    <string name="Home_Details">Home Details</string>
+    <string name="mobile">Mobile Number</string>
+    <string name="pick_image_intent_text">Pick Image</string>
+    <string name="internal_storage">Internal Storage</string>
+    <string name="Accept">Tap To Accept</string>
+    <string name="no_thanks">No Thanks</string>
+
+    <string name="hrs">hrs</string>
+    <string name="mints">mints</string>
+    <string name="minutes_to_arrive">to arrive</string>
+    <string name="Distance">Total Distance</string>
+    <string name="complete_trip">complete trip</string>
+    <string name="drop_off">drop off completed</string>
+    <string name="internet_error">Please Connect Internet !</string>
+    <string name="trip_completed">Trip Completed</string>
+    <string name="your_agent">Your Rider</string>
+    <string name="time">Time</string>
+    <string name="price">Price</string>
+    <string name="distance">Distance</string>
+    <string name="how_was_your_trip">How was your trip?</string>
+    <string name="additionl_comment">Additionl comment</string>
+
+    //image picker
+    <string name="croperino_saving_image" translatable="false">Saving image</string>
+    <string name="croperino_preparing_card" translatable="false">Preparing card</string>
+    <string name="croperino_no_storage_card" translatable="false">No storage card</string>
+    <string name="croperino_not_enough_space" translatable="false">Not enough space</string>
+
+</resources>

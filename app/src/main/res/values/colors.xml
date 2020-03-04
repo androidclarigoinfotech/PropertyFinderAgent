@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+
+    <color name="colorviolet">#a4b0d1</color>
+    <color name="text_purpal">#6A72A5</color>
+    <color name="colorGreen">#3DB24B</color>
+    <color name="colorGrey">#707070</color>
+    <color name="light_gray">#FCB3B0B0</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorBorder">#707070</color>
+    <color name="colorText">#FF6060</color>
+    <color name="white">#ffffff</color>
+    <color name="busy_orange">#ffB308</color>
+    <color name="map_green">#8ADE36</color>
+    <color name="order_light">#EDFAFF</color>
+    <color name="white_light">#FFFFFF</color>
+    <color name="hint_text_color">#707070</color>
+    <color name="text_color">#00A5F4</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_dark">#A1000000</color>
+    <color name="header_color">#057FBB</color>
+    <color name="cream_color">#f8f8f8</color>
+    <color name="white_light_tranc">#c7ffffff</color>
+    <color name="transparent_white">#95FFFFFF</color>
+
+    <color name="green">#3DB24B</color>
+    <color name="light_green">#273DB24B</color>
+    <color name="dark_gray">#303030</color>
+    <color name="yellow">#FFB308</color>
+    <color name="red">#CE3030</color>
+    <color name="disable_color">#BAC1C1C1</color>
+    <color name="tranch">#00FFFFFF</color>
+
+    <color name="colorPurple">#5E2EBA</color>
+    <color name="colorOrange">#FF6D00</color>
+    <color name="colorPurpleLight">#475C98</color>
+    <color name="colordarkblue">#244199</color>
+
+    //imagepicker
+    <color name="gray">#808080</color>
+    <color name="gray_variant">#ff565e6b</color>
+    <color name="dark_green">#006666</color>
+    <color name="green_variant">#2FBCA1</color>
+
+</resources>

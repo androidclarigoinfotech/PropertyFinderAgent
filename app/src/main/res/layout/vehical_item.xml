@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/_12dp"
+        android:layout_marginTop="@dimen/_8dp"
+        android:layout_marginRight="@dimen/_12dp"
+        android:layout_marginBottom="@dimen/_8dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_vehical_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vehical_model"
+            android:textColor="@color/colorPurpleLight"
+            android:textSize="@dimen/_14dp" />
+
+        <TextView
+            android:id="@+id/tv_vehical_make"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_vehical_model"
+            android:layout_marginTop="@dimen/_2dp"
+            android:text="@string/vehical_make"
+            android:textColor="@color/colorPurpleLight"
+            android:textSize="@dimen/_14dp" />
+
+        <TextView
+            android:id="@+id/tv_approved"
+            android:layout_width="@dimen/_100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/_12dp"
+            android:layout_toLeftOf="@+id/img_delete"
+            android:background="@drawable/btn_light_green_background"
+            android:gravity="center|center_vertical"
+            android:layout_centerVertical="true"
+            android:paddingTop="@dimen/_10dp"
+            android:paddingBottom="@dimen/_10dp"
+            android:text="@string/approved"
+            android:textAllCaps="true"
+            android:textColor="@color/green"
+            android:textSize="@dimen/_12dp"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/img_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/_14dp"
+            android:src="@drawable/delete" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

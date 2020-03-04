@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp"
+    tools:context=".Activity.SignUpActivity">
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/left_arrow_purpal" />
+
+    <ImageView
+        android:id="@+id/img_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_back"
+        android:src="@drawable/ic_frame"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Lets show\nsome homes!"
+            android:textColor="@color/colorPurple"
+            android:textSize="@dimen/_24dp" />
+
+        <Button
+            android:id="@+id/btn_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_heading"
+            android:layout_marginTop="@dimen/_25dp"
+            android:background="@drawable/bg_et_rounded_blue_border"
+            android:gravity="left|center_vertical"
+            android:padding="10dp"
+            android:text="Sign In"
+            android:textColor="@color/text_purpal" />
+
+        <Button
+            android:id="@+id/btn_agent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_sign_in"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_et_rounded_blue_border"
+            android:gravity="left|center_vertical"
+            android:padding="12dp"
+            android:text="Become an Agent"
+            android:textColor="@color/text_purpal" />
+
+        <TextView
+            android:id="@+id/tv_stuck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_forgot_pass"
+            android:layout_below="@id/btn_agent"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="16dp"
+            android:text="Stuck?"
+            android:textColor="@color/text_purpal"
+            android:textSize="@dimen/_18dp" />
+
+        <Button
+            android:id="@+id/btn_forgot_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_privacy"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_et_rounded_blue_border"
+            android:backgroundTint="@color/colorPurple"
+            android:drawableRight="@drawable/ic_msg"
+            android:gravity="left|center_vertical"
+            android:padding="12dp"
+            android:text="@string/forgot_password"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16dp" />
+
+        <TextView
+            android:id="@+id/tv_privacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:text="copyright 2019 | Terms of User | Privacy Policy"
+            android:textColor="@color/text_purpal"
+            android:textSize="14sp" />
+    </LinearLayout>
+</RelativeLayout>
