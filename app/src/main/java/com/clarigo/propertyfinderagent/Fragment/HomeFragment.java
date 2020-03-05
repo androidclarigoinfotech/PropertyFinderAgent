@@ -934,6 +934,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     private void get_Request_API() {
         //     Toast.makeText(getActivity(), lat + "  " + lng, Toast.LENGTH_SHORT).show();
         try {
+            Log.e("agent id", "agent id " + sessionManager.get_Agent_id());
             if (!sessionManager.get_Agent_id().equals("")) {
                 final Call<REQUEST_DTO> agent_list_dtos = apiInterface.get_request_notification(sessionManager.get_Agent_id());
                 agent_list_dtos.enqueue(new Callback<REQUEST_DTO>() {
@@ -948,7 +949,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                             if (request_dto == null)
                                 return;
                             if (request_dto.getStatus() == 1) {
-                                if (request_dto.getRequestdata() != null && !request_dto.getRequestdata().equals("")) {
+                                if (request_dto.getRequestdata() != null) {
                                     SessionManager.IS_REQUEST = true;
                                     switch (request_dto.getRequestdata().getStatus()) {
                                         case "0":
@@ -999,6 +1000,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                                 e.printStackTrace();
                                             }
                                             break;
+
                                         case "3":
                                             try {
                                                 if (Utility.isConnectingToInternet(getActivity())) {
@@ -1421,7 +1423,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                 if (user_marker != null) {
                     user_marker.remove();
                 }
-                Bitmap bitmap = BitmapFactory.decodeResource(Objects.requireNonNull(getActivity()).getResources(), R.drawable.location_marker_green);
+                Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.location_marker_green);
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG, 50, out);
 
@@ -1651,7 +1653,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                         String url = "";
                         FetchUrl FetchUrl = new FetchUrl();
                         // Getting URL to the Google Directions API
-                        url = getUrl(driverLatLng, sev_pro_latlng, userLatLan, mode_type);
+                        if (driverLatLng != null && sev_pro_latlng != null && userLatLan != null)
+                            url = getUrl(driverLatLng, sev_pro_latlng, userLatLan, mode_type);
                         Log.d("onMapClick", url.toString());
                         // Start downloading json data from Google Directions API
                         FetchUrl.execute(url);
@@ -1826,11 +1829,12 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             waypoints = "waypoints=";
 
             /////// waya user location
-            if (userLatLan.latitude != 0.0 || userLatLan.longitude != 0.0) {
-                waypoints += userLatLan.latitude + "," + userLatLan.longitude + "|";
-            }
+            if (userLatLan != null)
+                if (userLatLan.latitude != 0.0 || userLatLan.longitude != 0.0) {
+                    waypoints += userLatLan.latitude + "," + userLatLan.longitude + "|";
+                }
             // Origin of route
-            String str_user_location = "origin=" + userLatLan.latitude + "," + userLatLan.longitude;
+//                String str_user_location = "origin=" + userLatLan.latitude + "," + userLatLan.longitude;
 
             // Origin of route
             String str_agent_location = "origin=" + Agent_location.latitude + "," + Agent_location.longitude;
@@ -1911,9 +1915,11 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
     private void showTime(String distance, String time) {
         try {
-            if (distance != "" || time != "")
-                tv_total_distance.setText(distance);
-            tv_total_time.setText(time);
+            if (tv_total_distance != null && tv_total_time != null)
+                if (distance != null && time != null) {
+                    tv_total_distance.setText(distance);
+                    tv_total_time.setText(time);
+                }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2261,6 +2267,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     }
 
     private void cancle_request_api(String req_id, String comment) {
+
         final Call<CANCLE_REQUEST_DTO> cancle_request_dtoCall = apiInterface.cancle_request_api(req_id, comment, 2, "Agent", date, timezone, user_picker_address);
         cancle_request_dtoCall.enqueue(new Callback<CANCLE_REQUEST_DTO>() {
             @Override

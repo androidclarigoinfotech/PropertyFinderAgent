@@ -65,7 +65,7 @@ public class My_Car_Fragment extends Fragment implements View.OnClickListener {
     private TextView tv_other_doc, tv_car_insu, tv_car_reg;
     private String carRegi = "", carInsurence = "", otherDocument = "";
     private int requastcode;
-    ProgressBar progress;
+   private ProgressBar progress;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
