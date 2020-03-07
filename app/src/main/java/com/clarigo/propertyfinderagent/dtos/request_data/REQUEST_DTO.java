@@ -12,6 +12,17 @@ public class REQUEST_DTO {
     @SerializedName("status")
     @Expose
     private Integer status;
+
+    @Override
+    public String toString() {
+        return "REQUEST_DTO{" +
+                "response=" + response +
+                ", status=" + status +
+                ", message='" + message + '\'' +
+                ", requestdata=" + requestdata +
+                '}';
+    }
+
     @SerializedName("message")
     @Expose
     private String message;

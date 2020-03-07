@@ -15,6 +15,38 @@ public class REQUEST_DATA_DTO {
     @SerializedName("property_id")
     @Expose
     private String propertyId;
+
+    @Override
+    public String toString() {
+        return "REQUEST_DATA_DTO{" +
+                "agId='" + agId + '\'' +
+                ", agentId='" + agentId + '\'' +
+                ", propertyId='" + propertyId + '\'' +
+                ", lat='" + lat + '\'' +
+                ", lng='" + lng + '\'' +
+                ", loca='" + loca + '\'' +
+                ", status='" + status + '\'' +
+                ", reasons='" + reasons + '\'' +
+                ", userId='" + userId + '\'' +
+                ", pickupType='" + pickupType + '\'' +
+                ", acceptdate='" + acceptdate + '\'' +
+                ", canceldate='" + canceldate + '\'' +
+                ", types='" + types + '\'' +
+                ", timmer_time='" + timmer_time + '\'' +
+                ", req_time='" + req_time + '\'' +
+                ", timezone='" + timezone + '\'' +
+                ", createdDate='" + createdDate + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", emrNum='" + emrNum + '\'' +
+                ", profilepic='" + profilepic + '\'' +
+                ", userlat='" + userlat + '\'' +
+                ", userlng='" + userlng + '\'' +
+                ", location='" + location + '\'' +
+                '}';
+    }
+
     @SerializedName("lat")
     @Expose
     private String lat;

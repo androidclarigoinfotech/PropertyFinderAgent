@@ -688,6 +688,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
     private float ratings = 0;
     private String review_commnt = "";
+    private ProgressBar reviewProgrss;
 
     private void open_review_rating_screen(String vReq_id, String tv_name, String img_usert) {
         LayoutInflater inflater = (LayoutInflater) Objects.requireNonNull(getActivity()).getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -705,6 +706,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         final TextView txt_trip_completed, tv_user_name, tv_time, tv_price, tv_distance, txt_how_was, txt_submit;
         final RatingBar ratingBar;
         final ImageView img_submit;
+
         final CircleImageView profile_img;
         EditText edt_comment;
 
@@ -718,6 +720,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         txt_submit = popupView.findViewById(R.id.txt_submit);
         ratingBar = popupView.findViewById(R.id.ratingBar);
         edt_comment = popupView.findViewById(R.id.edt_comment);
+        reviewProgrss = popupView.findViewById(R.id.reviewProgrss);
         img_submit = popupView.findViewById(R.id.img_submit);
         profile_img = popupView.findViewById(R.id.profile_img);
 
@@ -771,21 +774,24 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     }
 
     private void call_complete_trip_api(String vReq_id) {
+        if (reviewProgrss != null)
+            reviewProgrss.setVisibility(View.VISIBLE);
         final Call<PICKUPUSERDTO> pickupuserdtoCall = apiInterface.request_complete_trip(vReq_id, 9, date, timezone, review_commnt, ratings, sessionManager.get_User_id(), sessionManager.get_Agent_id(), "agent");
         pickupuserdtoCall.enqueue(new Callback<PICKUPUSERDTO>() {
             @Override
             public void onResponse(@NotNull Call<PICKUPUSERDTO> call, @NotNull Response<PICKUPUSERDTO> response) {
+                if (reviewProgrss != null)
+                    reviewProgrss.setVisibility(View.GONE);
                 try {
                     PICKUPUSERDTO pickupuserdto = response.body();
                     if (pickupuserdto == null)
                         return;
-                    if (pickupuserdto.getResponse().equals(true)) {
+                    if (pickupuserdto.getResponse()) {
                         if (getActivity() != null) {
                             if (mGoogleMap != null) {
                                 mGoogleMap.clear();
                             }
                             getActivity().recreate();
-
                         }
                     } else {
                         Toast.makeText(getActivity(), !pickupuserdto.getMessage().isEmpty() ? pickupuserdto.getMessage() : "", Toast.LENGTH_SHORT).show();
@@ -798,6 +804,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onFailure(@NotNull Call<PICKUPUSERDTO> call, @NotNull Throwable t) {
                 Log.e("onFaliure..", "onFailure: ", t);
+                if (reviewProgrss != null)
+                    reviewProgrss.setVisibility(View.GONE);
             }
         });
     }
@@ -948,6 +956,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                         try {
                             if (request_dto == null)
                                 return;
+                            Log.e("getRequest data", "getRequest data " + response.body());
                             if (request_dto.getStatus() == 1) {
                                 if (request_dto.getRequestdata() != null) {
                                     SessionManager.IS_REQUEST = true;
@@ -1000,7 +1009,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                                 e.printStackTrace();
                                             }
                                             break;
-
                                         case "3":
                                             try {
                                                 if (Utility.isConnectingToInternet(getActivity())) {
