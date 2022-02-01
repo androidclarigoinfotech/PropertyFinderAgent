@@ -1,12 +1,18 @@
 package com.clarigo.propertyfinderagent.services;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.clarigo.propertyfinderagent.R;
@@ -15,9 +21,11 @@ import com.clarigo.propertyfinderagent.app.SessionManager;
 import com.clarigo.propertyfinderagent.retrofitHelper.APIClient;
 import com.clarigo.propertyfinderagent.retrofitHelper.APIInterface;
 
+import static androidx.core.app.NotificationCompat.PRIORITY_MIN;
+
 public class Request_Retrive_Service extends Service {
     public static final String ACTION_LOCATION_BROADCAST = Request_Retrive_Service.class.getName() + "LocationBroadcast";
-    public static final String SYNCREQ =  "Request";
+    public static final String SYNCREQ = "Request";
 
     public static Request_Retrive_Service request_retrive_service;
     APIInterface apiInterface;
@@ -43,9 +51,28 @@ public class Request_Retrive_Service extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        startServiceOreoCondition();
         request_retrive_service = this;
         apiInterface = APIClient.getClient().create(APIInterface.class);
         sessionManager = new SessionManager(this);
+    }
+
+    private void startServiceOreoCondition() {
+        if (Build.VERSION.SDK_INT >= 26) {
+
+
+            String CHANNEL_ID = "my_service";
+            String CHANNEL_NAME = "My Background Service";
+
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                    CHANNEL_NAME, NotificationManager.IMPORTANCE_NONE);
+            ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+
+            Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setCategory(Notification.CATEGORY_SERVICE).setSmallIcon(R.drawable.ic_launcher_background).setPriority(PRIORITY_MIN).build();
+
+            startForeground(101, notification);
+        }
     }
 
     @Override

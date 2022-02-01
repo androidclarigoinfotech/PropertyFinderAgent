@@ -1,14 +1,20 @@
 package com.clarigo.propertyfinderagent.services;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.clarigo.propertyfinderagent.Fragment.HomeFragment;
@@ -27,6 +33,8 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static androidx.core.app.NotificationCompat.PRIORITY_MIN;
 
 public class GET_User_Location_service extends Service {
 
@@ -71,9 +79,25 @@ public class GET_User_Location_service extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        startServiceOreoCondition();
         get_user_location_service = this;
         apiInterface = APIClient.getClient().create(APIInterface.class);
         sessionManager = new SessionManager(this);
+    }
+
+    private void startServiceOreoCondition() {
+        if (Build.VERSION.SDK_INT >= 26) {
+            String CHANNEL_ID = "my_service";
+            String CHANNEL_NAME = "My Background Service";
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                    CHANNEL_NAME, NotificationManager.IMPORTANCE_NONE);
+            ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+
+            Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setCategory(Notification.CATEGORY_SERVICE).setSmallIcon(R.drawable.ic_launcher_background).setPriority(PRIORITY_MIN).build();
+
+            startForeground(101, notification);
+        }
     }
 
     @Override

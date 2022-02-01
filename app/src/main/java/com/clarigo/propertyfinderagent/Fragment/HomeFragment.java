@@ -239,7 +239,12 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                 }
                 get_Request_API();
             } else {
-                getActivity().startService(new Intent(getActivity(), Request_Retrive_Service.class));
+//                getActivity().startService(new Intent(getActivity(), Request_Retrive_Service.class));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    getActivity().startForegroundService(new Intent(getActivity(), Request_Retrive_Service.class));
+                } else {
+                    getActivity().startService(new Intent(getActivity(), Request_Retrive_Service.class));
+                }
             }
             Agent_status_api();
         } else {
@@ -950,6 +955,16 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                     public void onResponse(@NotNull Call<REQUEST_DTO> call, @NotNull Response<REQUEST_DTO> response) {
                         REQUEST_DTO request_dto = response.body();
                         if (UpdateLocationService.updateLocationService == null) {
+                            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                // TODO: Consider calling
+                                //    ActivityCompat#requestPermissions
+                                // here to request the missing permissions, and then overriding
+                                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                //                                          int[] grantResults)
+                                // to handle the case where the user grants the permission. See the documentation
+                                // for ActivityCompat#requestPermissions for more details.
+                                return;
+                            }
                             mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
                             Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), UpdateLocationService.class));
                         }
@@ -1045,7 +1060,12 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                                         mode_type = 2;
                                                         bottom_sheet_driver_meetup_complete_trip.setVisibility(View.VISIBLE);
                                                         sessionManager.set_user_app_details(vProperty_id, vProperty_lat, vProperty_lng, mode_type);
-                                                        Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+//                                                        Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                            getActivity().startForegroundService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                        } else {
+                                                            getActivity().startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                        }
                                                         get_view_bottom_sheet_driver_meetup_arrived(vReq_id, vUser_name, vUser_Image, vUser_Mobile, vProperty_id, "arrived_status");
                                                         //    show_markers_locations(vUser_lat, vUser_lng, vProperty_id, vProperty_lat, vProperty_lng, mode_type);
                                                     }
@@ -1100,7 +1120,12 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                                         btn_arrived_meetup.setText("COMPLETE TRIP");
 
                                                         if (GET_User_Location_service.get_user_location_service == null) {
-                                                            Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+//                                                            Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                                getActivity().startForegroundService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            } else {
+                                                                getActivity().startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            }
                                                         }
                                                     }
                                                 } else {
@@ -1154,7 +1179,12 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                                         //    tv_method.setText("Method: Meet Up");
                                                         sessionManager.set_user_app_details(vProperty_id, vProperty_lat, vProperty_lng, mode_type);
                                                         try {
-                                                            Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+//                                                            Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                                getActivity().startForegroundService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            } else {
+                                                                getActivity().startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            }
                                                         } catch (Exception e) {
                                                             e.printStackTrace();
                                                         }
@@ -1211,7 +1241,12 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                                         //    tv_method.setText("Method: Meet Up");
                                                         sessionManager.set_user_app_details(vProperty_id, vProperty_lat, vProperty_lng, mode_type);
                                                         try {
-                                                            Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+//                                                            Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                                getActivity().startForegroundService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            } else {
+                                                                getActivity().startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            }
                                                         } catch (Exception e) {
                                                             e.printStackTrace();
                                                         }
@@ -1268,7 +1303,13 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                                         //    tv_method.setText("Method: Meet Up");
                                                         sessionManager.set_user_app_details(vProperty_id, vProperty_lat, vProperty_lng, mode_type);
                                                         try {
-                                                            Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+//                                                            Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                                getActivity().startForegroundService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            } else {
+                                                                getActivity().startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                            }
+
                                                         } catch (Exception e) {
                                                             e.printStackTrace();
                                                         }
@@ -1324,7 +1365,12 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                                         //    tv_method.setText("Method: Meet Up");
                                                         try {
                                                             if (GET_User_Location_service.get_user_location_service == null) {
-                                                                Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+//                                                                Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                                    getActivity().startForegroundService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                                } else {
+                                                                    getActivity().startService(new Intent(getActivity(), GET_User_Location_service.class));
+                                                                }
                                                             }
 
                                                         } catch (Exception e) {
@@ -1689,7 +1735,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                 getAddress(driverLatLng.latitude, driverLatLng.longitude);
                             }
                         });
-
                     }
                 }
             } catch (Exception ignored) {
@@ -1858,7 +1903,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
 
 //            String key = "key=" + "AIzaSyAv0CGME54AwtcjEIsW5iE0-jQfSfZYe4c";
-            String key = "key=" + "AIzaSyCxMCSVK_QzXdpQTY034oaC-arO-C4U_sQ";
+//            String key = "key=" + "AIzaSyCxMCSVK_QzXdpQTY034oaC-arO-C4U_sQ";
+            String key = "key=" + "AIzaSyAyLtolI46f77ebinBi8syGuJ0y5YfWozg";
             // Output format
             String output = "json";
             String parameters = "";
@@ -1903,7 +1949,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
 
 //            String key = "key=" + "AIzaSyAv0CGME54AwtcjEIsW5iE0-jQfSfZYe4c";
-            String key = "key=" + "AIzaSyCxMCSVK_QzXdpQTY034oaC-arO-C4U_sQ";
+            String key = "key=" + "AIzaSyAyLtolI46f77ebinBi8syGuJ0y5YfWozg";
             // Output format
             String output = "json";
             String parameters = "";
